@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#121212" />
+  <meta name="description" content="Our site is undergoing scheduled maintenance. We'll be back shortly—thank you for your patience." />
+  <title>Site Maintenance</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #121212;
+      font-family: 'Roboto', sans-serif;
+      color: #e0e0e0;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #1a1a1a 0%, #121212 100%);
+      animation: glowPulse 12s ease-in-out infinite;
+      z-index: -1;
+    }
+    @keyframes glowPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.95; }
+    }
+
+    .container {
+      background: rgba(31, 31, 31, 0.95);
+      border-radius: 16px;
+      padding: 3rem;
+      max-width: 540px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .static-icon {
+      margin-bottom: 1.2rem;
+    }
+    .static-icon svg {
+      width: 48px;
+      height: 48px;
+      animation: rotateLoop 6s linear infinite;
+    }
+    .static-icon circle.outer {
+      stroke: #aaaaaa;
+    }
+    .static-icon circle.inner {
+      fill: #aaaaaa;
+    }
+
+    @keyframes rotateLoop {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin: 1rem 0;
+      animation: fadeInUp 1s ease both;
+      animation-delay: 0.5s;
+    }
+
+    .message {
+      font-size: 1rem;
+      margin: 0.75rem 0;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeIn 1.2s ease both;
+    }
+    .message:nth-of-type(1) { animation-delay: 1s; }
+    .message:nth-of-type(2) { animation-delay: 1.6s; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .loader-bar {
+      width: 100%;
+      max-width: 300px;
+      height: 8px;
+      margin-top: 2.5rem;
+      border-radius: 4px;
+      background: linear-gradient(270deg, #aaaaaa, #aaaaaa);
+      background-size: 400% 100%;
+      animation: loaderSlide 3s ease infinite;
+      transition: background 0.4s ease;
+    }
+    .loader-bar:hover {
+      background: linear-gradient(270deg, #bb86fc, #a259ff);
+    }
+
+    @keyframes loaderSlide {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 100% 0%; }
+      100% { background-position: 0% 0%; }
+    }
+
+    .footer {
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: #888;
+      opacity: 0;
+      animation: fadeIn 1s ease both;
+      animation-delay: 2.4s;
+    }
+    .footer a {
+      color: #bb86fc;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 2rem; }
+      h1 { font-size: 1.8rem; }
+      .message { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="status" aria-live="polite">
+    <div class="static-icon" aria-hidden="true">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle class="outer" cx="24" cy="24" r="20" stroke-width="2.5" stroke-dasharray="6 6" />
+        <circle class="inner" cx="24" cy="24" r="4" />
+      </svg>
+    </div>
+    <h1>We'll Be Right Back</h1>
+    <p class="message">Great things take time! Our new website is under development and will be launching soon.</p>
+    <p class="message">Thank you for your patience.</p>
+    <div class="loader-bar" aria-hidden="true"></div>
+    <div class="footer">
+      Developed by <a href="Umbra" target="_blank" rel="noopener noreferrer">Umbra</a>
+    </div>
+  </div>
+</body>
+</html>
